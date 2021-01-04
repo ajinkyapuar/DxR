@@ -107,11 +107,11 @@ namespace HoloToolkit.Unity
                 EditorUserBuildSettings.wsaUWPBuildType = buildInfo.WSAUWPBuildType.Value;
             }
 
-            var oldWSAGenerateReferenceProjects = EditorUserBuildSettings.wsaGenerateReferenceProjects;
+            // var oldWSAGenerateReferenceProjects = EditorUserBuildSettings.wsaGenerateReferenceProjects;
 
             if (buildInfo.WSAGenerateReferenceProjects.HasValue)
             {
-                EditorUserBuildSettings.wsaGenerateReferenceProjects = buildInfo.WSAGenerateReferenceProjects.Value;
+                // EditorUserBuildSettings.wsaGenerateReferenceProjects = buildInfo.WSAGenerateReferenceProjects.Value;
             }
 
             var oldColorSpace = PlayerSettings.colorSpace;
@@ -140,7 +140,7 @@ namespace HoloToolkit.Unity
                 }
 
                 OnPreProcessBuild(buildInfo);
-                buildError = BuildPipeline.BuildPlayer(
+                var tempbuildError = BuildPipeline.BuildPlayer(
                     buildInfo.Scenes.ToArray(),
                     buildInfo.OutputDirectory,
                     buildInfo.BuildTarget,
@@ -155,10 +155,10 @@ namespace HoloToolkit.Unity
             {
                 OnPostProcessBuild(buildInfo, buildError);
 
-                if (buildInfo.BuildTarget == BuildTarget.WSAPlayer && EditorUserBuildSettings.wsaGenerateReferenceProjects)
-                {
-                    UwpProjectPostProcess.Execute(buildInfo.OutputDirectory);
-                }
+                // if (buildInfo.BuildTarget == BuildTarget.WSAPlayer && EditorUserBuildSettings.wsaGenerateReferenceProjects)
+                // {
+                //     UwpProjectPostProcess.Execute(buildInfo.OutputDirectory);
+                // }
 
                 PlayerSettings.colorSpace = oldColorSpace;
                 PlayerSettings.SetScriptingDefineSymbolsForGroup(buildTargetGroup, oldBuildSymbols);
@@ -168,7 +168,7 @@ namespace HoloToolkit.Unity
                     EditorUserBuildSettings.wsaUWPBuildType = oldWSAUWPBuildType.Value;
                 }
 
-                EditorUserBuildSettings.wsaGenerateReferenceProjects = oldWSAGenerateReferenceProjects;
+                // EditorUserBuildSettings.wsaGenerateReferenceProjects = oldWSAGenerateReferenceProjects;
 
                 EditorUserBuildSettings.SwitchActiveBuildTarget(oldBuildTargetGroup, oldBuildTarget);
             }

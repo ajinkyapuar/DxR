@@ -256,13 +256,13 @@ namespace HoloToolkit.Unity
 
                 // Generate C# Project References
                 EditorGUIUtility.labelWidth = 105;
-                bool generateReferenceProjects = EditorUserBuildSettings.wsaGenerateReferenceProjects;
-                bool shouldGenerateProjects = EditorGUILayout.Toggle("Unity C# Projects", generateReferenceProjects);
+                // bool generateReferenceProjects = EditorUserBuildSettings.wsaGenerateReferenceProjects;
+                // bool shouldGenerateProjects = EditorGUILayout.Toggle("Unity C# Projects", generateReferenceProjects);
 
-                if (shouldGenerateProjects != generateReferenceProjects)
-                {
-                    EditorUserBuildSettings.wsaGenerateReferenceProjects = shouldGenerateProjects;
-                }
+                // if (shouldGenerateProjects != generateReferenceProjects)
+                // {
+                //     EditorUserBuildSettings.wsaGenerateReferenceProjects = shouldGenerateProjects;
+                // }
 
                 // Restore previous label width
                 EditorGUIUtility.labelWidth = previousLabelWidth;
